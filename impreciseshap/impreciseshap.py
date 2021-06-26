@@ -10,8 +10,7 @@ from impreciseshap.solver import (
     calc_constants_dict_simple,
     solve_bounds_min,
     solve_max,
-    solve_min_l1,
-    solve_min_l2,
+    solve_min
 )
 from impreciseshap.utils import powerset
 
