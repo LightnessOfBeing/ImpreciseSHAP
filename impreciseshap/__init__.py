@@ -1,1 +1,1 @@
-from .src.impreciseshap import *
+from impreciseshap.impreciseshap import *

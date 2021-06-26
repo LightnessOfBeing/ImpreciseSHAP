@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import tqdm as tqdm
 
-from impreciseshap.src.solver import (
+from impreciseshap.solver import (
     calc_constants_dict,
     calc_constants_dict_simple,
     solve_bounds_min,
@@ -13,7 +13,7 @@ from impreciseshap.src.solver import (
     solve_min_l1,
     solve_min_l2,
 )
-from impreciseshap.src.utils import powerset
+from impreciseshap.utils import powerset
 
 
 class ImpreciseShap:
@@ -112,7 +112,8 @@ class ImpreciseShap:
                                     ubc = []
                                     for k in range(len(alpha) - 1):
                                         lbc.append(
-                                            solve_min_l1(
+                                            solve_min(
+                                                problem_type="l1",
                                                 vs=vs,
                                                 k=k,
                                                 pi=pi,
@@ -120,7 +121,8 @@ class ImpreciseShap:
                                             )
                                         )
                                         lbc.append(
-                                            solve_min_l2(
+                                            solve_min(
+                                                problem_type="l2",
                                                 vs=vs,
                                                 k=k,
                                                 pi=pi,
@@ -129,7 +131,7 @@ class ImpreciseShap:
                                         )
                                         ubc.append(
                                             solve_max(
-                                                type="u1",
+                                                problem_type="u1",
                                                 vs=vs,
                                                 k=k,
                                                 tau=tau,
@@ -138,7 +140,7 @@ class ImpreciseShap:
                                         )
                                         ubc.append(
                                             solve_max(
-                                                type="u2",
+                                                problem_type="u2",
                                                 vs=vs,
                                                 k=k,
                                                 tau=tau,
