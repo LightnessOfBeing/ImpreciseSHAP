@@ -98,7 +98,7 @@ class ImpreciseShap:
 
                                     diff_val = ks_ps - ks_pus
 
-                                    div = (
+                                    mult_factor = (
                                         math.factorial(len(s))
                                         * math.factorial(
                                             len(self.feature_names) - len(s) - 1
@@ -154,9 +154,9 @@ class ImpreciseShap:
                                     lower_bound = sorted(lbc, key=lambda x: -x[1])[0][0]
                                     upper_bound = sorted(ubc, key=lambda x: -x[1])[0][0]
 
-                                    shapley_values[f] += diff_val * div
-                                    shapley_values_l[f] += lower_bound * div
-                                    shapley_values_u[f] += upper_bound * div
+                                    shapley_values[f] += diff_val * mult_factor
+                                    shapley_values_l[f] += lower_bound * mult_factor
+                                    shapley_values_u[f] += upper_bound * mult_factor
 
             pi = p0
             alpha = pn
