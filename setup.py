@@ -15,7 +15,7 @@ class PostDevelopCommand(install):
 class PostInstallCommand(install):
     def run(self):
         install.run(self)
-        #shutil.rmtree("dist")
+        # shutil.rmtree("dist")
         shutil.rmtree(glob.glob("*.egg-info")[0])
         shutil.rmtree(glob.glob("build")[0])
 
@@ -32,5 +32,5 @@ setup(
     packages=find_packages(),
     python_requires=">=3.6",
     install_requires=install_requirements,
-    cmdclass={"install": PostInstallCommand, "develop": PostDevelopCommand}
+    cmdclass={"install": PostInstallCommand, "develop": PostDevelopCommand},
 )
