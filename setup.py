@@ -15,9 +15,9 @@ class PostDevelopCommand(install):
 class PostInstallCommand(install):
     def run(self):
         install.run(self)
-        shutil.rmtree("dist")
+        #shutil.rmtree("dist")
         shutil.rmtree(glob.glob("*.egg-info")[0])
-        shutil.rmtree(glob.glob("build/bdist.*")[0])
+        shutil.rmtree(glob.glob("build")[0])
 
 
 with open("requirements.txt") as f:

@@ -204,18 +204,8 @@ class ImpreciseShap:
         for f_name in f_vals:
             result[f"phi({f_name})_l"] = f_vals_l[f_name]
             result[f"phi({f_name})_u"] = f_vals_u[f_name]
-            result[f"phi({f_name})_m"] = (
-                result[f"phi({f_name})_l"]
-                + (result[f"phi({f_name})_u"] - result[f"phi({f_name})_l"]) / 2
-            )
-            result[f"phi({f_name})"] = f_vals[f_name]
             result[f"phi({f_name})_len"] = (
                 result[f"phi({f_name})_u"] - result[f"phi({f_name})_l"]
-            )
-            result[f"phi({f_name})_lc"] = f_vals_l_c[f_name]
-            result[f"phi({f_name})_uc"] = f_vals_u_c[f_name]
-            result[f"phi({f_name})_lenc"] = (
-                result[f"phi({f_name})_uc"] - result[f"phi({f_name})_lc"]
             )
 
         result.to_csv(self.result_path, index=False)

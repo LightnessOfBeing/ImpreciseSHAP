@@ -1,1 +1,2 @@
-from impreciseshap.impreciseshap import *
+from impreciseshap.impreciseshap import ImpreciseShap
+from impreciseshap.visualization import get_df_for_eps
